@@ -3,7 +3,7 @@ import cors from 'cors';
 import pino from 'pino-http';
 import 'dotenv/config';
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT ?? 300;
 
 // app
 const app = express();
