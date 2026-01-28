@@ -32,7 +32,10 @@ noteSchema.index(
   },
   {
     name: "NoteTextIndex",
-    weights: { name: 10 },
+    weights: {
+      title: 10,
+      content: 10
+    },
     default_language: "english",
   }
 );

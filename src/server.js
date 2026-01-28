@@ -6,6 +6,7 @@ import { logger } from "./middleware/logger.js";
 import { notFoundHandler } from "./middleware/notFoundHandler.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import notesRoutes from "./routes/notesRoutes.js";
+import { errors } from "celebrate";
 
 
 const PORT = process.env.PORT;
@@ -26,9 +27,10 @@ app.use(notesRoutes);
 
 // middleware
 app.use(notFoundHandler);
+app.use(errors);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`Server is startet on port ${PORT}`);
+  console.log(`Server is started on port ${PORT}`);
   console.log(`http://localhost:${PORT}`);
 });
