@@ -9,7 +9,7 @@ import notesRoutes from "./routes/notesRoutes.js";
 import { errors } from "celebrate";
 
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 // middleware
