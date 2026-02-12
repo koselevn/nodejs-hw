@@ -6,7 +6,9 @@ import { logger } from "./middleware/logger.js";
 import { notFoundHandler } from "./middleware/notFoundHandler.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import notesRoutes from "./routes/notesRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 import { errors } from "celebrate";
+import cookieParser from "cookie-parser";
 
 
 const PORT = process.env.PORT || 3000;
@@ -15,6 +17,7 @@ const app = express();
 // middleware
 app.use(express.json({limit: '100kb'}));
 app.use(cors());
+app.use(cookieParser());
 app.use(logger);
 
 // connection to db
@@ -22,7 +25,7 @@ await connectMongoDB();
 
 
 app.use(notesRoutes);
-
+app.use(authRoutes);
 
 
 // middleware
