@@ -95,14 +95,14 @@ export const logoutUser = async (req, res) => {
 export const requestResetEmail = async (req, res) => {
   const { email } = req.body;
 
-  const user = await User.find({ email });
+  const user = await User.findOne({ email });
 
   if (!user) {
     return res.status(200).json({ message: 'Password reset email sent successfully' });
   }
 
   const resetToken = jwt.sign(
-    { seb: user._id, email },
+    { sub: user._id, email },
     process.env.JWT_SECRET,
     { expiresIn: '15m' }
   );
